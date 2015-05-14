@@ -1,0 +1,82 @@
+<h2>Nuevo Usuario</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form-horizontal'}) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="form-group">
+    <%= f.label :Nombre, class: "col-md-2 control-label" %>
+    <div class="col-md-6">
+        <%= f.text_field :name, class: "form-control",autofocus: true %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :Apellido, class: "col-md-2 control-label" %>
+      <div class="col-md-6">
+        <%= f.text_field :last_name, class: "form-control",autofocus: true %>
+      </div>
+  </div>
+  
+  <div class="form-group">
+    <label class="col-md-2 control-label" for="checkboxes">Sexo</label>
+    <div class="col-md-6">
+      <div class="checkbox">
+        <label for="checkboxes-0">
+        <%= f.check_box :is_male, {}, true, class: "form-control"  %>
+        <%= f.label :is_male, "Masculino"%>
+        </label>
+      </div>
+      <div class="checkbox">
+            <label for="checkboxes-1">
+        <%= f.check_box :is_male, {}, false, class: "form-control" %>     
+        <%= f.label :is_male, "Femenino"%>  
+        </label>
+      </div>
+    </div>
+  </div>
+  
+    
+  <div class="form-group">
+    <%= f.label :Fecha_de_Nacimiento, class: "col-md-2 control-label"  %>
+      <div class="col-md-6">
+        <%= f.date_select :date_of_birth, class: "form-control",autofocus: true %>
+      </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :Email, class: "col-md-2 control-label" %>
+      <div class="col-md-6">
+        <%= f.email_field :email, class: "form-control", autofocus: true %>
+      </div>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :Password, class: "col-md-2 control-label" %>
+    <div class="col-md-6">
+        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+      <%= f.label :Confirmacion_Password, class: "col-md-2 control-label" %>
+      <div class="col-md-6">
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+      </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-offset-2 col-md-6">
+        <%= f.submit "Registrar", class: "btn btn-primary" %>
+    </div>
+  </div>
+  <div class="form-group">
+      <div class="col-md-offset-2 col-md-6">
+          <%= render "users/shared/links" %>
+      </div>
+  </div>
+  
+  <% end %>
